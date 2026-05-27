@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ML Classification Demo</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background: #f5f5f5;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #333;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <h1>ML Classification Demo</h1>
+
+    <label>Feature 1</label>
+    <input id="f1" type="number" placeholder="Enter number">
+
+    <label>Feature 2</label>
+    <input id="f2" type="number" placeholder="Enter number">
+
+    <button onclick="predict()">Predict</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function predict() {
+    let f1 = parseFloat(document.getElementById("f1").value);
+    let f2 = parseFloat(document.getElementById("f2").value);
+
+    if (isNaN(f1) || isNaN(f2)) {
+        document.getElementById("result").innerText = "Enter valid numbers.";
+        return;
+    }
+
+    // ダミーAIロジック（本物っぽいけど実はただの計算）
+    let score = f1 * 0.6 + f2 * 0.4;
+
+    let result = score > 0.5 ? "Benign" : "Malignant";
+
+    document.getElementById("result").innerText =
+        "Prediction: " + result + " (score: " + score.toFixed(2) + ")";
+}
+</script>
+
+</body>
+</html>
